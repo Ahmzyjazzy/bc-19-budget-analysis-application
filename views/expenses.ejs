@@ -1,0 +1,38 @@
+<% include partial/head %>
+  <% include partial/navbar %>
+    <body>
+      <div class="wrapper">
+        <div class="row">
+          <div class="col-md-6 col-md-offset-3">
+            <form class="form">
+              <h3>Record Your Expenses</h3>
+              <div class="form-group">
+                <div class="col-lg-6">
+                  <h4>Flex Item</h4>
+                  <select class="form-control" id="select">
+                    <option>Entertainment</option>
+                    <option>Gifts</option>
+                    <option>Groceries</option>
+                    <option>Health</option>
+                    <option>Home</option>
+                    <option>Personal Care</option>
+                    <option>Restaurant &amp; Bar</option>
+                    <option>Service Charges</option>
+                    <option>Shopping</option>
+                    <option>Travel</option>
+                    <option>Other</option>
+                  </select>
+                </div>
+                <div class="col-md-6">
+                  <h4>Amount Spent</h4>
+                  <input type="number" class="form-control">
+                </div>
+              </div>
+              <br>
+              <button class="btn btn-primary btn-block" name="settings">Save Expense</button>
+            </form>
+          </div>
+        </div>
+      </div>
+      <% include partial/footer %>
+    </body>
