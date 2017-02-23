@@ -28,7 +28,7 @@ router.get('/view-expenses', (req, res) => {
 
 //view-expenses page
 router.get('/report', (req, res) => {
-	res.render('report');
+	res.render('report', {budget: null});
 });
 
 module.exports = router;

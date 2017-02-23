@@ -1,10 +1,81 @@
 <% include partial/head %>
   <% include partial/navbar %>
     <body>
-      <div class="wrapper">
+      <div class="wrapper padded">
         <div class="row">
           <div class="col-md-8 col-md-offset-2">
-            <h1 class="text-center">Here's your report</h1>
+            <h2 class="text-center">Hi, here's a report of your financial standing</h2>
+            <br>
+            <% let amount = 0 %>
+            <% let income = 0 %>
+            <% let status = '' %>
+            <% let fixed_costs = 0 %>
+            <% let flex_expenses = 0 %>
+            <% let budget_month %>
+            <% let income_paychecks %>
+            <% let income_other_sources %>
+            <% let fc_rent %>
+            <% let fc_utilities %>
+            <% let fc_insuarance %>
+            <% let flex_groceries %>
+            <% let flex_health %>
+            <% let flex_entertainment %>
+            <% let flex_restaurant_bar %>
+            <% let flex_personal_care %>
+            <% let flex_service_charges %>
+            <% let flex_shopping %>
+            <% let flex_gifts %>
+            <% let flex_travel %>
+            <% let flex_other %>
+
+            <% for(item in budget) {
+              //accumulate data values
+              income = Number(budget[item].income_paychecks) + Number(budget[item].income_other_sources);
+              fixed_costs = Number(budget[item].fc_rent) + Number(budget[item].fc_utilities) + Number(budget[item].fc_insuarance);
+              flex_expenses = Number(budget[item].flex_groceries) + Number(budget[item].flex_health) +
+                              Number(budget[item].flex_entertainment) + Number(budget[item].flex_restaurant_bar) +
+                              Number(budget[item].flex_personal_care) + Number(budget[item].flex_service_charges) +
+                              Number(budget[item].flex_shopping) + Number(budget[item].flex_gifts) +
+                              Number(budget[item].flex_travel) + Number(budget[item].flex_other);
+              amount = Number(budget[item].fixed_costs) + Number(budget[item].flex_expenses);
+            } 
+
+            //check if income is above expences
+            if(amount < income) {
+                status = 'Favourable';
+              } else {
+                status = 'Unfavourable';
+              }
+
+            %>
+            <table class="table table-striped table-hover ">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Month</th>
+                  <th>Income</th>
+                  <th>Total Fixed Costs</th>
+                  <th>Total Flex Expenses</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% if(budget) { %>
+                  <% let count = 1 %>
+                  <% for(item in budget) { %>
+                  <tr>
+                    <td><%= count %></td>
+                    <td><%= budget[item].budget_month%></td>
+                    <td><%= income %></td>
+                    <td><%= fixed_costs %></td>
+                    <td><%= flex_expenses%></td>
+                    <td><%= status %></td>
+                  </tr>
+                  <% count += 1 %>
+                  <% } %>
+                <% } %>
+              </tbody>
+            </table>
           </div>
         </div>
       </div>

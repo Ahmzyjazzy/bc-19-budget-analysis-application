@@ -7,6 +7,7 @@ auth = require('./controllers/auth.js'),
 saveBudget = require('./controllers/budget.js'),
 saveExpenses = require('./controllers/expenses.js');
 getExpenses = require('./controllers/view-expenses.js');
+getReport = require('./controllers/report.js');
 
 //initalize express
 const app = express();
@@ -43,6 +44,7 @@ app.get('/signOut', auth.signOut);
 app.post('/save_budget', saveBudget.save_budget);
 app.post('/save_expenses', saveExpenses.save_expenses);
 app.get('/dashboard/view-expenses', getExpenses.get_expenses);
+app.get('/dashboard/report', getReport.get_report);
 app.get('/google', auth.google);
 
 //route dashboard pages
