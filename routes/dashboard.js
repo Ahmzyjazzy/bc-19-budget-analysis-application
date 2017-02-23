@@ -23,7 +23,7 @@ router.get('/record-expenses', (req, res) => {
 
 //view-expenses page
 router.get('/view-expenses', (req, res) => {
-	res.render('view-expenses');
+	res.render('view-expenses', {expenses: null});
 });
 
 //view-expenses page
