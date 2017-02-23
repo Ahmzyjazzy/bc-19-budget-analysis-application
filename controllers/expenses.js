@@ -10,23 +10,22 @@ module.exports.save_expenses = (req, res) => {
         amount_spent = req.body.amount_spent,
         userId;
     
-    fire_base.onAuthStateChanged(user => {
-        if(user) {
-            //get user id
-            userId = user.uid;
+    let user = fire_base.currentUser;
+    if(user) {
+        //get user id
+        userId = user.uid;
 
-            expensesRef.child('/' + userId).push({
-            flex_item,
-            amount_spent
-        })
-        .then((user) => {
-                res.redirect('/dashboard/view-expenses');
-            })
-            .catch((err) => {
-                let errorCode = err.code;
-                let errorMessage = err.message;
-                return res.render('/dashboard/expenses', {error: errorMessage});
-            });
-        }
+        expensesRef.child('/' + userId).push({
+        flex_item,
+        amount_spent
     })
+    .then((user) => {
+            res.redirect('/dashboard/view-expenses');
+        })
+        .catch((err) => {
+            let errorCode = err.code;
+            let errorMessage = err.message;
+            return res.render('/dashboard/expenses', {error: errorMessage});
+        });
+    }
 }
