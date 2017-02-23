@@ -6,7 +6,7 @@ dotenv = require('dotenv').config(),
 auth = require('./controllers/auth.js'),
 saveBudget = require('./controllers/budget.js'),
 saveExpenses = require('./controllers/expenses.js');
-// flash = require('connect-flash');
+getExpenses = require('./controllers/view-expenses.js');
 
 //initalize express
 const app = express();
@@ -42,6 +42,7 @@ app.post('/', auth.login);
 app.get('/signOut', auth.signOut);
 app.post('/save_budget', saveBudget.save_budget);
 app.post('/save_expenses', saveExpenses.save_expenses);
+app.get('/dashboard/view-expenses', getExpenses.get_expenses);
 app.get('/google', auth.google);
 
 //route dashboard pages
