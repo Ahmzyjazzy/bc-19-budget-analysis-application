@@ -4,10 +4,17 @@
         <div class="wrapper">
           <div class="row">
             <div class="col-md-6 col-md-offset-3">
-              <form class="form">
+
+            <% if(error) { %>
+            <div class = "alert alert-danger">
+              <%= error %>
+            </div>
+            <% } %>
+
+              <form class="form" method ='post' action ='/save_budget'>
                 <div class="form-group">
                   <h3>Budget Month</h3>
-                  <select class="form-control" id="select">
+                  <select class="form-control" id="select" name="month">
                     <option>January</option>
                     <option>February</option>
                     <option>March</option>
@@ -27,7 +34,7 @@
                 <label for="paychecks" class="sr-only">Income (Paychecks)</label>
                 <input type="number" id="paychecks" name="paychecks" class="form-control" placeholder="Income (Paychecks)" required autofocus>
                 <label for="other-sources" class="sr-only">Income (Other sources)</label>
-                <input type="number" id="other-sources" name="other-sources" class="form-control" placeholder="Income (Other sources)" required>
+                <input type="number" id="other-sources" name="other_sources" class="form-control" placeholder="Income (Other sources)" required>
 
                 <h3>Fixed Costs</h3>
                 <label for="rent" class="sr-only">Rent</label>
@@ -40,47 +47,49 @@
                 <h3>Flex Expenses</h3>
                 <div class="form-group">
                   <div class="col-lg-6">
-                    <input type="number" class="form-control" placeholder="Groceries">
+                    <input type="number" name="groceries" class="form-control" placeholder="Groceries">
                   </div>
                   <div class="col-md-6">
-                    <input type="number" class="form-control" placeholder="Health">
+                    <input type="number" class="form-control" name="health" placeholder="Health">
                   </div>
                 </div>
                 <div class="form-group">
                   <div class="col-lg-6">
-                    <input type="number" class="form-control" placeholder="Entertainment">
+                    <input type="number" class="form-control" name="entertainment" placeholder="Entertainment">
                   </div>
                   <div class="col-md-6">
-                    <input type="number" class="form-control" placeholder="Restaurant & Bar">
+                    <input type="number" class="form-control" name="restaurant_bar" placeholder="Restaurant & Bar">
                   </div>
                 </div>
                 <div class="form-group">
                   <div class="col-lg-6">
-                    <input type="number" class="form-control" placeholder="Presonal Care">
+                    <input type="number" class="form-control" name="personal_care" placeholder="Presonal Care">
                   </div>
                   <div class="col-md-6">
-                    <input type="number" class="form-control" placeholder="Service Charges">
+                    <input type="number" class="form-control" name="service_charges" placeholder="Service Charges">
                   </div>
                 </div>
                 <div class="form-group">
                   <div class="col-lg-6">
-                    <input type="number" class="form-control" placeholder="Shopping">
+                    <input type="number" class="form-control" name="shopping" placeholder="Shopping">
                   </div>
                   <div class="col-md-6">
-                    <input type="number" class="form-control" placeholder="Gifts">
+                    <input type="number" class="form-control" name="gifts" placeholder="Gifts">
                   </div>
                 </div>
                 <div class="form-group">
                   <div class="col-lg-6">
-                    <input type="number" class="form-control" placeholder="Travel">
+                    <input type="number" class="form-control" name="travel" placeholder="Travel">
                   </div>
                   <div class="col-md-6">
-                    <input type="number" class="form-control" placeholder="Home">
+                    <input type="number" class="form-control" name="other" placeholder="Other">
                   </div>
                 </div>
 
                 <br>
-                <button class="btn btn-primary btn-block" name="settings">Save</button>
+                <div class="col-md-6 col-md-offset-6">
+                <button class="btn btn-primary btn-block" name="settings">Save Expense</button>
+              </div>
               </form>
             </div>
           </div>
