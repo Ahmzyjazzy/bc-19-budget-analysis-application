@@ -68,7 +68,7 @@ module.exports.google = (req, res) => {
 //signOut
 module.exports.signOut = (req, res) => {
     fire_base.signOut()
-        .then((user) => {
+        .then(() => {
             res.redirect('/');
         })
         .catch((err) => {

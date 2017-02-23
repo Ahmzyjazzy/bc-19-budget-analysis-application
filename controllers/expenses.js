@@ -11,9 +11,10 @@ module.exports.save_expenses = (req, res) => {
         userId;
     
     fire_base.onAuthStateChanged(user => {
-        userId = user.uid;
-
         if(user) {
+            //get user id
+            userId = user.uid;
+
             expensesRef.child('/' + userId).push({
             flex_item,
             amount_spent

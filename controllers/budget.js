@@ -26,9 +26,10 @@ module.exports.save_budget = (req, res) => {
         userId;
 
     fire_base.onAuthStateChanged(user => {
-        userId = user.uid;
-
         if(user) {
+            //get user userId
+            userId = user.uid;
+
             budgetRef.child('/' + userId).push({
             budget_month,
                 income: {
