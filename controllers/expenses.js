@@ -6,18 +6,26 @@ let db = firebase.database(),
 
 module.exports.save_expenses = (req, res) => {
     //get data from DOM
-    let flex_item = req.body.flex_item;
-    let amount_spent = req.body.amount_spent;
+    let flex_item = req.body.flex_item,
+        amount_spent = req.body.amount_spent,
+        userId;
     
-    expensesRef.push({
-        flex_item,
-        amount_spent
-    }).then((user) => {
-            res.redirect('/dashboard/view-expenses');
+    fire_base.onAuthStateChanged(user => {
+        userId = user.uid;
+
+        if(user) {
+            expensesRef.child('/' + userId).push({
+            flex_item,
+            amount_spent
         })
-        .catch((err) => {
-            let errorCode = err.code;
-            let errorMessage = err.message;
-            return res.render('/dashboard/expenses', {error: errorMessage});
-        });
+        .then((user) => {
+                res.redirect('/dashboard/view-expenses');
+            })
+            .catch((err) => {
+                let errorCode = err.code;
+                let errorMessage = err.message;
+                return res.render('/dashboard/expenses', {error: errorMessage});
+            });
+        }
+    })
 }

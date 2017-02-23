@@ -7,19 +7,21 @@ let fire_base = firebase.auth();
 module.exports.register = (req, res) => {
     let full_name = req.body.full_name,
         email = req.body.email,
-        password = req.body.password,
-        userId = fire_base.currentUser.uid;
+        password = req.body.password;
 
     fire_base.createUserWithEmailAndPassword(email, password)
         .then((user) => {
-            ref.child('users').push ({
+            let userId = user.uid;
+            let userRef = ref.child('users/' + userId);
+            
+            return userRef.set({
                 userId,
                 full_name,
                 email,
                 password
             });
-            res.redirect('/dashboard')
         })
+        .then(res.redirect('/dashboard'))
         .catch((err) => {
             let errorCode = err.code;
             let errorMessage = err.message;
