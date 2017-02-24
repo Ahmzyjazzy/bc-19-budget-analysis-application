@@ -35,7 +35,7 @@
 *  Install the app's dependencies. For best results, using a node package manager.
   *  `npm install`
 *  Create a firebase project in your firebase console and copy the configuration and keys.
-*  Navigate to `/helpers/firebase.js` and paste the details in there
+*  Navigate to `.example.env` and put the details in there and rename the file to `.env`
 
     >In order to use app dependencies, you need to install it through **npm**. You also need to have **node** installed on your system.
 
