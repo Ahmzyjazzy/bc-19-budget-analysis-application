@@ -77,3 +77,5 @@ module.exports.signOut = (req, res) => {
             return res.render('index', {error: errorMessage});
         });
 }
+
+//var userId = firebase.auth().currentUser.uid;

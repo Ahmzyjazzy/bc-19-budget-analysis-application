@@ -15,13 +15,11 @@ module.exports.save_expenses = (req, res) => {
         //get user id
         userId = user.uid;
 
-        expensesRef.child('/' + userId).push({
+    expensesRef.child('/' + userId).push({
         flex_item,
         amount_spent
     })
-    .then((user) => {
-            res.redirect('/dashboard/view-expenses');
-        })
+    .then(res.redirect('/dashboard/view-expenses'))
         .catch((err) => {
             let errorCode = err.code;
             let errorMessage = err.message;

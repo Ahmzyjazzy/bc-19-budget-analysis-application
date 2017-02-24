@@ -24,7 +24,7 @@ module.exports.save_budget = (req, res) => {
         flex_other = req.body.other,
         userId;
 
-    fire_base.onAuthStateChanged(user => {
+    let user = fire_base.currentUser;
         if(user) {
             //get user userId
             userId = user.uid;
@@ -47,16 +47,11 @@ module.exports.save_budget = (req, res) => {
             flex_travel,
             flex_other
         })
-        .then((user) => {
-                console.log('fadf');
-                res.redirect('/dashboard/view-budget');
-            })
+        .then(res.redirect('/dashboard/report'))
             .catch((err) => {
-                console.log('catch');
                 let errorCode = err.code;
                 let errorMessage = err.message;
                 return res.render('/dashboard/budget', {error: errorMessage});
             });
         }
-    })
 }
