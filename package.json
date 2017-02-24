@@ -19,11 +19,9 @@
   "homepage": "https://github.com/kingisaac95/bc-19-budget-analysis-application#readme",
   "dependencies": {
     "body-parser": "^1.16.1",
-    "connect-flash": "^0.1.1",
     "dotenv": "^4.0.0",
     "ejs": "^2.5.6",
     "express": "^4.14.1",
-    "firebase-admin": "^4.1.1"
   },
   "devDependencies": {
     "nodemon": "^1.11.0"
