@@ -10,7 +10,7 @@ module.exports.get_expenses = (req, res) => {
     if (user) {
         // User is signed in.
         let userId = user.uid;
-        expensesRef.child('/' + userId).on('value', (data) => {
+        expensesRef.child('/' + userId).once('value', (data) => {
             let obj = data.val();
             res.render('view-expenses', {expenses: obj});
         }, (err) => {
